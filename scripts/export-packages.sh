@@ -8,7 +8,7 @@ set -euo pipefail
 OMARCHY_PKGS="${OMARCHY_PKGS:-$HOME/omarchy/install/omarchy-base.packages $HOME/omarchy/install/omarchy-other.packages}"
 
 # Explicitly installed + foreign (AUR/other-repo)
-{ pacman -Qeq; pacman -Qm; } | sort -u > /tmp/installed.$$
+{ pacman -Qeq; pacman -Qm | awk '{print $1}'; } | sort -u > /tmp/installed.$$
 
 # Packages Omarchy installs by default (first word of each manifest line)
 cat $OMARCHY_PKGS 2>/dev/null | awk '{print $1}' | sort -u > /tmp/omarchy-defaults.$$

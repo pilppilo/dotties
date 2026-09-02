@@ -12,6 +12,7 @@ openai-codex
 openvpn
 proton-vpn-cli
 proton-vpn-gtk-app
+tailscale
 wireguard-tools
 
 # From the Omarchy repo
