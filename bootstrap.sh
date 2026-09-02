@@ -40,14 +40,19 @@ fi
 
 echo "==> Installing extra packages from packages.txt"
 if command -v omarchy >/dev/null; then
-  # Non-AUR entries (repo repos) first
   repo_pkgs=$(grep -vE '^\s*(#|$)' packages.txt | grep -vx chatgpt || true)
-  aur_pkgs=$(grep -vE '^\s*(#|$)' packages.txt | grep -x chatgpt || true)
   [[ -n "$repo_pkgs" ]] && omarchy pkg add $repo_pkgs
-  [[ -n "$aur_pkgs" ]] && omarchy pkg aur add $aur_pkgs
 else
   echo "    omarchy CLI not found — install packages.txt manually:"
   grep -vE '^\s*(#|$)' packages.txt
+fi
+
+echo "==> Building self-packaged chatgpt (pilppilo/codex-omarchy)"
+if ! pacman -Qi chatgpt >/dev/null 2>&1; then
+  [[ -d ~/codex-pkgbuild ]] || git clone https://github.com/pilppilo/codex-omarchy ~/codex-pkgbuild
+  (cd ~/codex-pkgbuild && makepkg -si)
+else
+  echo "    chatgpt already installed"
 fi
 
 echo "==> Enabling user systemd units"

@@ -20,5 +20,7 @@ spotify
 visual-studio-code-bin
 voxtype-bin
 
-# AUR (installed via `omarchy pkg aur add`)
+# Self-packaged — NOT on AUR. Built from the PKGBUILD at
+# https://github.com/pilppilo/codex-omarchy (bootstrap.sh clones it to
+# ~/codex-pkgbuild and runs makepkg)
 chatgpt
