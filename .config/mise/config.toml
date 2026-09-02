@@ -1,0 +1,7 @@
+[tools]
+codex = "latest"
+gh = "latest"
+node = "26.7.0"
+opencode = "latest"
+pnpm = "latest"
+python = "latest"

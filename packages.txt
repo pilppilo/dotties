@@ -1,0 +1,23 @@
+# Extra packages installed beyond Omarchy defaults.
+# Regenerate with: ~/scripts/export-packages.sh
+#
+# Format: one package per line. Lines starting with "#" are comments.
+# bootstrap.sh installs these with `omarchy pkg add` (covers Arch `extra`,
+# `omarchy` repo) and `omarchy pkg aur add` for the AUR section.
+
+# From the Arch repos
+baobab
+firefox
+openai-codex
+openvpn
+proton-vpn-cli
+proton-vpn-gtk-app
+wireguard-tools
+
+# From the Omarchy repo
+spotify
+visual-studio-code-bin
+voxtype-bin
+
+# AUR (installed via `omarchy pkg aur add`)
+chatgpt

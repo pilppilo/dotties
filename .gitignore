@@ -1,0 +1,52 @@
+# Dotfiles bare-repo ignore: everything is ignored by default; only
+# whitelisted paths below are tracked. Never whitelist a file containing
+# secrets (keys, tokens, browser profiles) — see README.md.
+*
+!.gitignore
+!README.md
+!bootstrap.sh
+!packages.txt
+!.bashrc
+!.bash_profile
+!.profile
+!.XCompose
+
+# Hyprland (Omarchy 4 uses .lua configs) — top-level files only
+!/.config/
+!/.config/hypr/
+!/.config/hypr/*
+
+# Omarchy shell + menu
+!/.config/omarchy/
+!/.config/omarchy/shell.json
+!/.config/omarchy/extensions/
+!/.config/omarchy/extensions/omarchy-menu.jsonc
+
+# Git identity + aliases
+!/.config/git/
+!/.config/git/config
+
+# App configs installed beyond Omarchy defaults
+!/.config/opencode/
+!/.config/opencode/opencode.json
+!/.config/opencode/tui.json
+!/.config/voxtype/
+!/.config/voxtype/config.toml
+!/.config/herdr/
+!/.config/herdr/config.toml
+!/.config/mise/
+!/.config/mise/config.toml
+!/.config/lazygit/
+!/.config/lazygit/config.yml
+!/.config/btop/
+!/.config/btop/btop.conf
+
+# User systemd units
+!/.config/systemd/
+!/.config/systemd/user/
+!/.config/systemd/user/hermes-gateway.service
+!/.config/systemd/user/voxtype.service
+
+# Repo tooling
+!/scripts/
+!/scripts/export-packages.sh
