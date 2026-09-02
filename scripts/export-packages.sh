@@ -7,14 +7,19 @@ set -euo pipefail
 
 OMARCHY_PKGS="${OMARCHY_PKGS:-$HOME/omarchy/install/omarchy-base.packages $HOME/omarchy/install/omarchy-other.packages}"
 
+# Create secure temporary files that automatically clean up on exit
+TMP_INSTALLED=$(mktemp)
+TMP_DEFAULTS=$(mktemp)
+trap 'rm -f "$TMP_INSTALLED" "$TMP_DEFAULTS"' EXIT
+
 # Explicitly installed + foreign (AUR/other-repo)
-{ pacman -Qeq; pacman -Qm | awk '{print $1}'; } | sort -u > /tmp/installed.$$
+# pacman -Qmq avoids the need for awk
+{ pacman -Qeq; pacman -Qmq; } | sort -u > "$TMP_INSTALLED"
 
 # Packages Omarchy installs by default (first word of each manifest line)
-cat $OMARCHY_PKGS 2>/dev/null | awk '{print $1}' | sort -u > /tmp/omarchy-defaults.$$
+# shellcheck disable=SC2086 # Intended word splitting for multiple paths
+cat $OMARCHY_PKGS 2>/dev/null | awk '{print $1}' | sort -u > "$TMP_DEFAULTS"
 
 echo "# Extras beyond Omarchy defaults ($(date +%F))"
 echo "# Review each line, then curate into ~/packages.txt"
-comm -23 /tmp/installed.$$ /tmp/omarchy-defaults.$$
-
-rm -f /tmp/installed.$$ /tmp/omarchy-defaults.$$
+comm -23 "$TMP_INSTALLED" "$TMP_DEFAULTS"
