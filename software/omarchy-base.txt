@@ -1,0 +1,2 @@
+# Snapshot of explicitly installed native packages from a clean Omarchy base.
+# Generate/review this separately; it is not the desired package manifest.

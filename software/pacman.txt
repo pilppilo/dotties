@@ -1,0 +1,12 @@
+# Official Arch/Omarchy packages intentionally added beyond the base system.
+# One package per line; comments and blank lines are ignored.
+baobab
+code
+firefox
+openai-codex
+openvpn
+proton-vpn-cli
+proton-vpn-gtk-app
+spotify-launcher
+tailscale
+wireguard-tools

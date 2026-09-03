@@ -1,0 +1,3 @@
+# Omarchy theme selected for this machine.
+# This is the theme name accepted by: omarchy theme set <name>
+miasma

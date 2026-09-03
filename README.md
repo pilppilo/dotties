@@ -11,7 +11,11 @@ the work-tree at `$HOME` (the classic [Atlassian dotfiles technique][atlassian])
 - `~/.bashrc`, `~/.bash_profile`, `~/.profile`, `~/.XCompose`
 - App configs that don't ship with Omarchy: `opencode`, `voxtype`, `herdr`, `mise`, `lazygit`, `btop`
 - User systemd units: `hermes-gateway.service`, `voxtype.service`
-- `packages.txt` — extra packages to install on a fresh machine (Brewfile-equivalent)
+- `software/pacman.txt` — curated official packages to install on a fresh machine
+- `software/plugins.txt` — tracked Omarchy plugin repositories and IDs
+- `software/flatpak.txt` — optional Flatpak application IDs
+- `software/omarchy-theme.txt` — selected Omarchy theme to restore
+- `SPEC.md` — implementation and safety requirements
 
 Stock-unchanged configs (foot, kitty, tmux, starship, …) are **not** tracked —
 Omarchy's defaults restore them, keeping the repo small and diffs meaningful.
@@ -48,25 +52,33 @@ dotfiles add -u && dotfiles commit -m "post-update snapshot"
 After installing new apps:
 
 ```bash
-~/scripts/export-packages.sh        # diff installed vs Omarchy defaults
-# hand-curate output into ~/packages.txt, then commit
+~/scripts/export-packages.sh        # export a reviewable native-package candidate list
+# hand-curate approved entries into ~/software/pacman.txt, then commit
 ```
 
 ## Restoring on a fresh Omarchy install
 
 ```bash
-git clone git@github.com:<you>/dotfiles.git ~/dotfiles-repo && ~/dotfiles-repo/bootstrap.sh
-# or the raw-URL one-liner printed by GitHub after the first push
+curl -fsSL https://raw.githubusercontent.com/pilppilo/dotties/master/bootstrap.sh \
+  -o /tmp/bootstrap.sh
+bash /tmp/bootstrap.sh git@github.com:pilppilo/dotties.git
 ```
 
-Bootstrap: clones the repo to a bare `~/.dotfiles`, checks everything out
-(conflicting files are moved to `~/.dotfiles-backup/`), installs `packages.txt`
-via `omarchy pkg add`, enables user systemd units, and generates a **fresh SSH
-key** (print the public key and add it at https://github.com/settings/keys).
-SSH private keys are deliberately never stored in this repo.
+Bootstrap: clones the repo to a bare `~/.dotfiles`, checks everything out,
+installs `software/pacman.txt` with pacman, applies the selected Omarchy theme,
+installs official external tools, configures tracked Omarchy plugins and
+NextDNS, and enables tracked user systemd units. Conflicting files are not
+overwritten automatically. Git identity and GitHub SSH access are expected to
+be configured during the Omarchy installation; private keys are never stored
+in this repo.
 
-If anything conflicts or looks wrong, restore from `~/.dotfiles-backup/` or
-reset a specific file with `omarchy refresh config <path>`.
+Useful options include `--dry-run`, `--skip-packages`,
+`--skip-external`, `--skip-plugins`, `--skip-nextdns`, and
+`--update-plugins`.
+
+If anything conflicts or looks wrong, the bootstrap stops without overwriting
+the conflicting file. Resolve the conflict manually, then rerun it. Reset a
+specific Omarchy file with `omarchy refresh config <path>` when appropriate.
 
 ## Optional upgrade: 1Password SSH agent
 

@@ -5,7 +5,6 @@
 !.gitignore
 !README.md
 !bootstrap.sh
-!packages.txt
 !.bashrc
 !.bash_profile
 !.profile
@@ -50,3 +49,19 @@
 # Repo tooling
 !/scripts/
 !/scripts/export-packages.sh
+!/scripts/inventory-software.sh
+
+# Software manifests
+!/software/
+!/software/pacman.txt
+!/software/omarchy-base.txt
+!/software/flatpak.txt
+!/software/plugins.txt
+!/software/omarchy-theme.txt
+
+# Tracked NextDNS source configuration
+!/.config/nextdns/
+!/.config/nextdns/nextdns.conf
+
+# Specification
+!/SPEC.md

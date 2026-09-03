@@ -12,6 +12,8 @@ source "$OMARCHY_PATH/default/bash/rc"
 #
 # Make an alias for invoking commands you use constantly
 # alias p='python'
+alias agys='agy --dangerously-skip-permissions'
+
 
 # >>> Codex installer >>>
 export PATH="/home/USERNAME/.local/bin:$PATH"

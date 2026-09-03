@@ -1,0 +1,1 @@
+# Flatpak application IDs intentionally installed beyond the base system.

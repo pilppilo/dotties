@@ -1,0 +1,2 @@
+# plugin-id|git-repository|checkout-directory
+gemini-usage|git@github.com:pilppilo/gemini-plugin.git|$HOME/src/gemini-plugin
