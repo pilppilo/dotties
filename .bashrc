@@ -16,7 +16,7 @@ alias agys='agy --dangerously-skip-permissions'
 
 
 # >>> Codex installer >>>
-export PATH="/home/USERNAME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 # <<< Codex installer <<<
 
 . "$HOME/.local/share/../bin/env"

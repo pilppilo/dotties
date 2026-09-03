@@ -3,4 +3,4 @@
 
 
 # Added by Antigravity CLI installer
-export PATH="/home/USERNAME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
