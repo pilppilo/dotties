@@ -187,6 +187,8 @@ if (( ! SKIP_NEXTDNS )) && [[ -f "$HOME/.config/nextdns/nextdns.conf" ]]; then
   if command -v dig >/dev/null 2>&1; then
     dig @127.0.0.1 example.com +short >/dev/null || { echo "NextDNS health check failed" >&2; exit 1; }
   fi
+elif (( ! SKIP_NEXTDNS )); then
+  echo "==> Skipping NextDNS (no local $HOME/.config/nextdns/nextdns.conf)"
 fi
 
 echo "==> Enabling user systemd units"

@@ -59,9 +59,5 @@
 !/software/plugins.txt
 !/software/omarchy-theme.txt
 
-# Tracked NextDNS source configuration
-!/.config/nextdns/
-!/.config/nextdns/nextdns.conf
-
 # Specification
 !/SPEC.md

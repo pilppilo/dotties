@@ -8,7 +8,7 @@ StartLimitIntervalSec=0
 Type=simple
 ExecStart=%h/.hermes/hermes-agent/venv/bin/python -m hermes_cli.main gateway run
 WorkingDirectory=%h/.hermes
-Environment="PATH=%h/.hermes/hermes-agent/venv/bin:%h/.hermes/hermes-agent/node_modules/.bin:%h/.local/share/mise/installs/node/26.7.0/bin:%h/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="PATH=%h/.hermes/hermes-agent/venv/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin"
 Environment="VIRTUAL_ENV=%h/.hermes/hermes-agent/venv"
 Environment="HERMES_HOME=%h/.hermes"
 Restart=always

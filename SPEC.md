@@ -32,8 +32,6 @@ bare-repository workflow.
 ```text
 $HOME/
 ├── .config/
-│   ├── nextdns/
-│   │   └── nextdns.conf
 │   └── omarchy/
 │       └── shell.json
 ├── .gitignore
@@ -53,8 +51,8 @@ $HOME/
 ### 3.1 Tracked configuration
 
 - `.config/omarchy/shell.json` contains the user bar/widget configuration.
-- `.config/nextdns/nextdns.conf` is the tracked source for the local NextDNS
-  configuration, if the user elects to track it.
+- `.config/nextdns/nextdns.conf` is machine-local configuration and must not be
+  tracked because it contains a NextDNS profile identifier.
 - No credentials, API tokens, private keys, or auth caches may be committed.
 
 The `.gitignore` rules must allow each parent directory as well as the target
@@ -65,7 +63,8 @@ git check-ignore -v .config/omarchy/shell.json
 git check-ignore -v .config/nextdns/nextdns.conf
 ```
 
-Those commands should report that the files are not ignored.
+The shell configuration should not be ignored; the NextDNS command should
+report that the machine-local file is ignored.
 
 ## 4. Software tracking model
 

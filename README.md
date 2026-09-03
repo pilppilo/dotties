@@ -67,10 +67,14 @@ bash /tmp/bootstrap.sh git@github.com:pilppilo/dotties.git
 Bootstrap: clones the repo to a bare `~/.dotfiles`, checks everything out,
 installs `software/pacman.txt` with pacman, applies the selected Omarchy theme,
 installs official external tools, configures tracked Omarchy plugins and
-NextDNS, and enables tracked user systemd units. Conflicting files are not
+optional local NextDNS, and enables tracked user systemd units. Conflicting files are not
 overwritten automatically. Git identity and GitHub SSH access are expected to
 be configured during the Omarchy installation; private keys are never stored
 in this repo.
+
+NextDNS configuration is intentionally machine-local and is not tracked. If
+you use NextDNS, create `~/.config/nextdns/nextdns.conf` yourself before
+running bootstrap; the script skips NextDNS when that file is absent.
 
 Useful options include `--dry-run`, `--skip-packages`,
 `--skip-external`, `--skip-plugins`, `--skip-nextdns`, and
